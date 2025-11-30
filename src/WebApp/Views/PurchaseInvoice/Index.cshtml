@@ -1,0 +1,443 @@
+﻿@model List<PurchaseInvoiceListDto>
+
+@{
+    ViewData["Title"] = "لیست فاکتورهای خرید";
+    var suppliers = ViewBag.Suppliers;
+    var products = ViewBag.Products;
+}
+
+<div class="container mt-4" style="direction:rtl;">
+
+    <h2 class="mb-3"><strong>لیست فاکتورهای خرید</strong></h2>
+    <hr />
+
+    <div class="card">
+        <div class="card-body">
+
+            <div class="row">
+
+                <div class="col-md-3">
+                    <label>نام محصول</label>
+                    <input id="ProductName" class="form-control" placeholder="مثلاً: استامینوفن" />
+                </div>
+
+                <div class="col-md-2">
+                    <label>شماره فاکتور</label>
+                    <input id="InvoiceNumber" class="form-control" placeholder="1234" />
+                </div>
+
+                <div class="col-md-3">
+                    <label>تأمین‌کننده</label>
+                    <select id="SupplierId" class="form-control">
+                        <option value="">همه</option>
+                        @foreach (var s in suppliers)
+                        {
+                            <option value="@s.Id">@s.Name</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="col-md-2">
+                    <label>از تاریخ</label>
+                    <input id="FromDate" type="date" class="form-control" />
+                </div>
+
+                <div class="col-md-2">
+                    <label>تا تاریخ</label>
+                    <input id="ToDate" type="date" class="form-control" />
+                </div>
+
+            </div>
+
+            <button class="btn btn-primary btn-sm mt-3 w-100" onclick="searchInvoices()">جستجو</button>
+        </div>
+    </div>
+
+    <div class="card mt-4">
+        <div class="card-body">
+            <table class="table table-striped table-bordered" id="invoiceTable">
+                <thead>
+                    <tr>
+                        <th>شماره فاکتور</th>
+                        <th>تامین کننده</th>
+                        <th>تاریخ</th>
+                        <th>جمع کل</th>
+                        <th>جزئیات</th>
+                    </tr>
+                </thead>
+                <tbody id="invoiceBody">
+                    @foreach (var inv in Model)
+                    {
+                        <tr>
+                            <td>@inv.InvoiceNumber</td>
+                            <td>@inv.SupplierName</td>
+                            <td>@inv.Date.ToString("yyyy/MM/dd")</td>
+                            <td>@String.Format("{0:N0}", inv.TotalPrice)</td>
+                            <td>
+                                <button class="btn btn-info btn-sm" onclick="showDetails(@inv.Id)">مشاهده</button>
+                                <button class="btn btn-warning btn-sm" onclick="editInvoice(@inv.Id)">ویرایش</button>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="modal fade" id="invoiceModal" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content shadow-lg" style="border-radius:12px;">
+
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title">
+                    <i class="bi bi-receipt-cutoff me-2"></i> جزئیات فاکتور خرید
+                </h5>
+            </div>
+
+            <div class="modal-body" style="background:#fafafa;">
+
+                <div class="row text-center mb-4">
+
+                    <div class="col-md-4">
+                        <div class="p-3 bg-white shadow-sm rounded">
+                            <strong class="text-secondary">شماره فاکتور</strong>
+                            <div class="fw-bold mt-1" id="mInvoiceNumber"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="p-3 bg-white shadow-sm rounded">
+                            <strong class="text-secondary">تأمین‌کننده</strong>
+                            <div class="fw-bold mt-1" id="mSupplier"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="p-3 bg-white shadow-sm rounded">
+                            <strong class="text-secondary">تاریخ</strong>
+                            <div class="fw-bold mt-1" id="mDate"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card shadow-sm">
+                    <div class="card-header bg-light fw-bold">
+                        <i class="bi bi-box-seam me-1"></i>
+                        لیست آیتم‌های فاکتور
+                    </div>
+
+                    <div class="card-body p-0">
+                        <table class="table table-hover mb-0 text-center">
+                            <thead class="table-secondary">
+                                <tr>
+                                    <th>محصول</th>
+                                    <th>تعداد</th>
+                                    <th>قیمت خرید</th>
+                                    <th>قیمت فروش</th>
+                                </tr>
+                            </thead>
+                            <tbody id="mItems"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="mt-4 text-end">
+                    <h5>
+                        جمع کل:
+                        <span class="text-primary fw-bold" id="mTotal"></span>
+                        تومان
+                    </h5>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">
+                    بستن
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="editModal" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+
+            <div class="modal-header bg-warning">
+                <h5 class="modal-title">ویرایش فاکتور خرید</h5>
+            </div>
+
+            <div class="modal-body">
+
+                <input type="hidden" id="eId" />
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>شماره فاکتور</label>
+                        <input id="eInvoiceNumber" class="form-control" disabled />
+                    </div>
+
+                    <div class="col-md-4">
+                        <label>تأمین‌کننده</label>
+                        <select id="eSupplierId" class="form-control">
+                            @foreach (var s in suppliers)
+                            {
+                                <option value="@s.Id">@s.Name</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label>تاریخ</label>
+                        <input id="eDate" type="date" class="form-control" />
+                    </div>
+                </div>
+
+                <hr />
+
+                <h5>آیتم‌ها</h5>
+
+                <table class="table table-bordered text-center" id="itemsTable">
+                    <thead>
+                        <tr>
+                            <th>محصول</th>
+                            <th>تعداد</th>
+                            <th>قیمت خرید</th>
+                            <th>قیمت فروش</th>
+                            <th>عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="eItems"></tbody>
+                </table>
+
+                <button class="btn btn-success" onclick="addItemRow()">افزودن آیتم</button>
+
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="saveEdit()">ذخیره تغییرات</button>
+                <button class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+@section Scripts {
+
+    <script>
+
+        function searchInvoices() {
+
+            const data = {
+                ProductName: $("#ProductName").val() || null,
+                InvoiceNumber: $("#InvoiceNumber").val() || null,
+                SupplierId: $("#SupplierId").val() ? parseInt($("#SupplierId").val()) : null,
+                FromDate: $("#FromDate").val() ? new Date($("#FromDate").val()) : null,
+                ToDate: $("#ToDate").val() ? new Date($("#ToDate").val()) : null
+            };
+
+            $.ajax({
+                url: "/PurchaseInvoice/Search",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(data),
+                success: function (res) {
+                    $("#invoiceBody").html("");
+
+                    res.forEach(inv => {
+                        $("#invoiceBody").append(`
+                            <tr>
+                                <td>${inv.invoiceNumber}</td>
+                                <td>${inv.supplierName}</td>
+                                <td>${inv.dateString}</td>
+                                <td>${inv.totalPrice.toLocaleString()}</td>
+                                <td>
+                                    <button class="btn btn-info btn-sm" onclick="showDetails(${inv.id})">
+                                        مشاهده
+                                    </button>
+                                    <button class="btn btn-warning btn-sm" onclick="editInvoice(${inv.id})">
+                                       ویرایش
+                                    </button>
+
+                                </td>
+                            </tr>
+                        `)
+                    });
+                }
+            });
+        }
+
+
+        function showDetails(id) {
+
+            $.get(`/PurchaseInvoice/Details/${id}`, function (data) {
+
+                $("#mInvoiceNumber").text(data.invoiceNumber);
+                $("#mSupplier").text(data.supplierName);
+                let jalali = new Date(data.date).toLocaleDateString("fa-IR");
+                $("#mDate").text(jalali);
+                $("#mTotal").text(data.totalPrice.toLocaleString());
+                $("#mItems").html("");
+
+                data.items.forEach(i => {
+                    $("#mItems").append(`
+                        <tr>
+                            <td>${i.productName}</td>
+                            <td>${i.quantity}</td>
+                            <td>${i.purchasePrice.toLocaleString()}</td>
+                            <td>${i.salePrice.toLocaleString()}</td>
+                        </tr>
+                    `);
+                });
+
+                var modal = new bootstrap.Modal(document.getElementById('invoiceModal'));
+                modal.show();
+            });
+        }
+
+            function editInvoice(id) {
+
+            $.get(`/PurchaseInvoice/Details/${id}`, function (data) {
+
+                $("#eId").val(data.id);
+                $("#eInvoiceNumber").val(data.invoiceNumber);
+                $("#eSupplierId").val(data.supplierId);
+
+                let d = new Date(data.date);
+                $("#eDate").val(d.toISOString().substring(0, 10));
+
+                $("#eItems").html("");
+
+                data.items.forEach(i => {
+                    $("#eItems").append(`
+                        <tr>
+                            <td><input class="form-control" value="${i.productName}" disabled /> <span hidden>${i.productId}</span></td>
+                            <td><input class="form-control" type="number" value="${i.quantity}" /></td>
+                            <td><input class="form-control" type="number" value="${i.purchasePrice}" /></td>
+                            <td><input class="form-control" type="number" value="${i.salePrice}" /></td>
+                            <td><button class="btn btn-danger" onclick="removeRow(this)">حذف</button></td>
+                        </tr>
+                    `);
+                });
+
+                new bootstrap.Modal('#editModal').show();
+            });
+        }
+
+      
+        function saveEdit() {
+
+            let id = $("#eId").val();
+
+            let items = [];
+
+            $("#eItems tr").each(function () {
+
+            let tds = $(this).find("td");
+
+            let span = $(tds[0]).find("span");
+            let isOld = span.length > 0;
+
+            let productId = isOld
+                ? parseInt(span.text())                        
+                : parseInt($(tds[0]).find("select").val());      
+
+            let productName = isOld
+                ? $(tds[0]).find("input").val()                
+                : $(tds[0]).find("select option:selected").text(); 
+
+            items.push({
+                productId: productId,
+                productName: productName,
+                quantity: parseFloat($(tds[1]).find("input").val()),
+                purchasePrice: parseFloat($(tds[2]).find("input").val()),
+                salePrice: parseFloat($(tds[3]).find("input").val())
+            });
+        });
+
+            let postData = {
+                Id: parseInt(id),
+                invoiceNumber: $("#eInvoiceNumber").val(),
+                supplierId: $("#eSupplierId").val(),
+                items: items
+            };
+            //alert(JSON.stringify(postData, null, 4));
+
+            $.ajax({
+                url: "/PurchaseInvoice/Edit",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(postData),
+                 success: function (data) {
+                    if (data.isSuccess) {
+                        swal.fire('موفق', data.message, 'success')
+                            .then(() => location.reload());
+                    }
+                    else {
+                        swal.fire('هشدار', data.message, 'warning');
+                    }
+                },
+                error: function () {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'خطای سرور',
+                        text: 'مشکلی پیش آمد، دوباره تلاش کنید.',
+                        confirmButtonText: 'باشه'
+                    });
+                }
+            });
+        }
+    </script>
+
+    <script>
+
+        function addItemRow() {
+
+            let row = `
+                <tr>
+                    <td>
+                        <select class="form-control product">
+                            <option value="">انتخاب...</option>
+                                 @foreach (var p in products)
+                                 {
+                                    <option value="@p.Id">@p.Name</option>
+                                 }
+                       </select>
+                    </td>
+                    
+                    <td>
+                        <input type="number" min="1" class="form-control qty" />
+                    </td>
+
+                    <td>
+                        <input type="number" min="0" class="form-control purchasePrice" placeholder="قیمت خرید" />
+                    </td>
+
+                    <td>
+                        <input type="number" min="0" class="form-control salePrice" placeholder="قیمت فروش" />
+                    </td>
+
+                    <td>
+                        <button class="btn btn-danger btn-sm" onclick="removeRow(this)">حذف</button>
+                    </td>
+                </tr>
+            `;
+
+            $("#itemsTable tbody").append(row);
+        }
+
+        function removeRow(btn) {
+            $(btn).closest("tr").remove();
+        }
+
+    </script>
+}
+

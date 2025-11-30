@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ProductIdentifier.WebUI</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ProductIdentifier.WebUI.styles.css" asp-append-version="true" />
+    <link href="~/Sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+</head>
+<body style="direction:rtl;">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+
+                <a class="navbar-brand fw-bold" href="/">سیستم فروش</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#mainNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNavbar">
+
+                    <ul class="navbar-nav me-auto">
+
+                        <!-- محصولات -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                محصولات
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="/Home">لیست محصولات</a></li>
+                                <li><a class="dropdown-item" href="/Home/Create">افزودن محصول</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- فاکتور خرید -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                فاکتور خرید
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="/PurchaseInvoice">لیست فاکتورهای خرید</a></li>
+                                <li><a class="dropdown-item" href="/PurchaseInvoice/Create">صدور فاکتور خرید</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- فاکتور فروش -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                فاکتور فروش
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="/SaleInvoice">لیست فاکتورهای فروش</a></li>
+                                <li><a class="dropdown-item" href="/SaleInvoice/Create">صدور فاکتور فروش</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/Sweetalert2/sweetalert2.min.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+    @await RenderSectionAsync("Modals", required: false)
+</body>
+</html>

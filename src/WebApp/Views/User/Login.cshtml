@@ -1,0 +1,114 @@
+﻿@{
+    ViewData["Title"] = "ورود به سیستم";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>ورود به سیستم</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/Sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+
+    <style>
+        body {
+            background: #f2f4f7;
+            font-family: IRANSans, sans-serif;
+        }
+
+        .login-box {
+            max-width: 420px;
+            margin: 90px auto;
+            padding: 35px;
+            background: #fff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 12px;
+        }
+
+        .login-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            text-align: center;
+            color: #333;
+        }
+
+        .logo {
+            width: 70px;
+            display: block;
+            margin: 0 auto 20px auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-box">
+
+        <img class="logo" src="https://cdn-icons-png.flaticon.com/512/5087/5087579.png" />
+
+        <div class="login-title">ورود به سیستم فروش</div>
+
+        <div class="mb-3">
+            <label class="form-label">نام کاربری</label>
+            <input id="username" class="form-control" autocomplete="off" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">رمز عبور</label>
+            <input id="password" class="form-control" type="password" autocomplete="off" />
+        </div>
+
+        <button class="btn btn-primary w-100" onclick="loginUser()">ورود</button>
+
+        <p class="text-center mt-3 text-muted" style="font-size: 13px;">
+            © سیستم مدیریت فروش
+        </p>
+
+    </div>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/Sweetalert2/sweetalert2.min.js"></script>
+
+    <script>
+        function loginUser() {
+            const username = $("#username").val().trim();
+            const password = $("#password").val().trim();
+
+            if (!username || !password) {
+                Swal.fire("خطا", "تمام فیلدها الزامی است", "warning");
+                return;
+            }
+
+            $.ajax({
+                url: "/User/Login",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({ username, password }),
+                success: function (data) {
+                    if (data.isSuccess) {
+                        Swal.fire({
+                            title: "موفق",
+                            text: "ورود با موفقیت انجام شد",
+                            icon: "success"
+                        }).then(() => {
+                            window.location.href = "/Home/Index";
+                        });
+                    } else {
+                        Swal.fire("هشدار", data.message || "ورود ناموفق", "warning");
+                    }
+                },
+                error: function (xhr) {
+                    Swal.fire("خطا", xhr.responseJSON?.message || "خطای نامشخص", "error");
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

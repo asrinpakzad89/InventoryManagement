@@ -1,0 +1,228 @@
+﻿@model Application.Features.SaleInvoices.Commands.Create.CreateSaleInvoicesCommand
+
+@{
+    ViewData["Title"] = "صدور فاکتور فروش";
+    var customers = ViewBag.Customers;
+    var products = ViewBag.Products;
+}
+
+<div class="container mt-4" style="direction:rtl;">
+
+    <h2 class="mb-3"><strong>صدور فاکتور فروش</strong></h2>
+    <hr />
+
+    <div class="card">
+        <div class="card-body">
+
+            <div class="row">
+
+                <div class="col-md-4">
+                    <label>شماره فاکتور</label>
+                    <input id="InvoiceNumber" class="form-control" />
+                </div>
+
+                <div class="col-md-4">
+                    <label>مشتری</label>
+                    <select id="CustomerId" class="form-control">
+                        <option value="">انتخاب کنید...</option>
+                        @foreach (var cus in customers)
+                        {
+                            <option value="@cus.Id">@cus.Name</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="col-md-4">
+                    <label>تاریخ</label>
+                    <input class="form-control" disabled value="@DateTime.Now.ToShamsi()" />
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card mt-4">
+        <div class="card-header">
+            <strong>آیتم‌ها</strong>
+            <button class="btn btn-success btn-sm float-start" onclick="addItemRow()"> + اضافه کردن آیتم </button>
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-bordered" id="itemsTable">
+                <thead>
+                    <tr>
+                        <th>محصول</th>
+                        <th>تعداد</th>
+                        <th>قیمت فروش</th>
+                        <th>حذف</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+
+    <button class="btn btn-primary mt-3 w-100" onclick="submitInvoice()">ثبت فاکتور</button>
+
+</div>
+
+@section Scripts {
+
+    <script>
+
+        function addItemRow() {
+
+            let products = @Html.Raw(Json.Serialize(products));
+
+            let productOptions = '<option value="">انتخاب کنید...</option>';
+
+            products.forEach(p => {
+                 const disabled = p.quantity === 0 ? "disabled" : "";
+                 const label = p.quantity === 0
+                     ? `${p.name} (ناموجود)`
+                     : `${p.name} (موجودی: ${p.quantity})`;
+                 
+                 productOptions += `
+                     <option value="${p.id}" data-qty="${p.quantity}" data-price="${p.sellingPrice}" ${disabled}>
+                         ${label}
+                     </option>`;
+             });
+
+            let row = `
+                <tr>
+                    <td>
+                        <select class="form-control productSelect" onchange="onProductChange(this)">
+                            ${productOptions}
+                        </select>
+                    </td>
+
+                    <td>
+                        <input type="number" class="form-control qtyInput" min="1" value="1"
+                            oninput="validateQuantity(this)" />
+                    </td>
+
+                    <td>
+                        <input type="number" class="form-control priceInput" min="0" />
+                    </td>
+
+                    <td class="text-center">
+                        <button class="btn btn-danger btn-sm" onclick="removeRow(this)">حذف</button>
+                    </td>
+                </tr>
+            `;
+
+            $("#itemsTable tbody").append(row);
+        }
+
+
+        function removeRow(btn) {
+            $(btn).closest("tr").remove();
+        }
+
+
+        function onProductChange(select) {
+
+            let selected = $(select).find("option:selected");
+
+            let qty = selected.data("qty");
+            let price = selected.data("price");
+
+            let row = $(select).closest("tr");
+
+            row.find(".qtyInput").attr("max", qty);
+            row.find(".qtyInput").val(1);
+
+            row.find(".priceInput").val(price);
+        }
+
+        function validateQuantity(input) {
+
+            let row = $(input).closest("tr");
+            let product = row.find(".productSelect option:selected");
+
+            let maxQty = product.data("qty");
+
+            if (!maxQty) {
+                $(input).val(1);
+                return;
+            }
+
+            let val = parseInt($(input).val());
+
+            if (val > maxQty) {
+                 swal.fire('هشدار', "تعداد بیشتر از موجودی است!", 'warning');
+                $(input).val(maxQty);
+            }
+
+            if (val <= 0) $(input).val(1);
+        }
+
+        function submitInvoice() {
+
+            let invoiceNumber = $("#InvoiceNumber").val();
+            let customerId = $("#CustomerId").val();
+
+            let items = [];
+
+            $("#itemsTable tbody tr").each(function () {
+
+                let productId = $(this).find(".productSelect").val();
+                let qty = $(this).find(".qtyInput").val();
+                let price = $(this).find(".priceInput").val();
+
+                if (productId) {
+                    items.push({
+                        ProductId: parseInt(productId),
+                        Quantity: parseFloat(qty),
+                        SalePrice: parseFloat(price)
+                    });
+                }
+            });
+
+            if (items.length === 0) {
+                swal.fire('هشدار', "حداقل یک آیتم باید اضافه شود.", 'warning');
+                return;
+            }
+
+            let dto = {
+                InvoiceNumber: invoiceNumber,
+                CustomerId: parseInt(customerId),
+                Items: items
+            };
+
+            $.ajax({
+                url: "/SaleInvoice/Create",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(dto),
+
+               success: function (data) {
+                    if (data.isSuccess) {
+                        swal.fire('موفق', data.message, 'success')
+                            .then(() => location.reload());
+                    }
+                    else {
+                        swal.fire('هشدار', data.message, 'warning');
+                    }
+                },
+                error: function () {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'خطای سرور',
+                        text: 'مشکلی پیش آمد، دوباره تلاش کنید.',
+                        confirmButtonText: 'باشه'
+                    });
+                }
+            });
+
+        }
+
+    </script>
+
+}

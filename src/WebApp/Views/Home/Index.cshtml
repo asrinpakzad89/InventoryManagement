@@ -1,0 +1,380 @@
+﻿@model IEnumerable<Application.Common.ViewModels.Products.ProductDto>
+
+@{
+    ViewData["Title"] = "مدیریت محصولات";
+}
+
+<div style="direction:rtl;">
+    <h1 class="display-6"><strong>مدیریت محصولات</strong></h1>
+    <hr />
+
+    <section id="configuration">
+        <div class="row">
+            <div class="col-12">
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title-wrap bar-success">
+                            <div class="form input-group">
+                                <button class="btn btn-primary mx-2" onclick="ShowModalCreateProduct()">ثبت محصول جدید</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-body collapse show">
+                        <div class="card-block card-dashboard">
+                            <div class="table-responsive">
+
+                                <table class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>کد</th>
+                                            <th>نام</th>
+                                            <th>جرم</th>
+                                            <th>نوع</th>
+                                            <th>تأمین‌کننده</th>
+                                            <th>قیمت خرید</th>
+                                            <th>قیمت فروش</th>
+                                            <th>تعداد موجودی</th>
+                                            <th>عملیات</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        @if (Model != null && Model.Any())
+                                        {
+                                            foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td>@item.Code</td>
+                                                    <td>@item.Name</td>
+                                                    <td>@item.Crime</td>
+                                                    <td>@item.Type</td>
+                                                    <td>@item.SupplierName</td>
+                                                    <td>@string.Format("{0:N0}", item.PurchasePrice)</td>
+                                                    <td>@string.Format("{0:N0}", item.SellingPrice)</td>
+                                                    <td>@item.Quantity.ToString("0")</td>
+
+                                                    <td>
+                                                        <button class="btn btn-info btn-sm text-light"
+                                                                onclick="ShowModalEditProduct(
+                                                                    '@item.Id',
+                                                                    '@item.Code',
+                                                                    '@item.Name',
+                                                                    '@((int)item.Type)',
+                                                                    '@item.SupplierId',
+                                                                    '@item.Crime',
+                                                                    '@item.Quantity',
+                                                                    '@item.PurchasePrice',
+                                                                    '@item.SellingPrice'
+                                                                )">
+                                                            ویرایش
+                                                        </button>
+
+                                                        <button class="btn btn-danger btn-sm"
+                                                                onclick="DeleteProduct('@item.Id')">
+                                                            حذف
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+
+@section Scripts {
+    <script>
+
+        function DeleteProduct(id) {
+
+            swal.fire({
+                title: 'حذف',
+                text: "آیا از حذف محصول مطمئن هستید؟",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'بله',
+                cancelButtonText: 'خیر'
+            }).then((result) => {
+
+                if (result.value) {
+
+                    $.ajax({
+                        contentType: 'application/json',
+                        dataType: 'json',
+                        type: "POST",
+                        url: "/Home/Delete",
+                        data: JSON.stringify({ id }),
+                        success: function (data) {
+                            if (data.isSuccess) {
+                                swal.fire('موفق', data.message, 'success')
+                                    .then(() => location.reload());
+                            }
+                            else {
+                                swal.fire('هشدار', data.message, 'warning');
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+
+        function ShowModalEditProduct(id, code, name, type, supplierId, crime, qty, purchasePrice, sellingPrice) 
+        {
+            $("#Edit_ProductId").val(id);
+            $("#Edit_Code").val(code);
+            $("#Edit_Name").val(name);
+            $("#Edit_Type").val(type);
+            $("#Edit_SupplierId").val(supplierId);
+            $("#Edit_Crime").val(crime);
+            $("#Edit_Quantity").val(qty);
+            $("#Edit_PurchasePrice").val(purchasePrice);
+            $("#Edit_SellingPrice").val(sellingPrice);
+
+            $("#EditProduct").modal("show");
+        }
+
+        function EditProduct() {
+
+            const postData = {
+                id: $("#Edit_ProductId").val(),
+                code: $("#Edit_Code").val(),
+                name: $("#Edit_Name").val(),
+                type: parseInt($("#Edit_Type").val()),
+                supplierId: $("#Edit_SupplierId").val(),
+                crime: $("#Edit_Crime").val(),
+                quantity: $("#Edit_Quantity").val(),
+                purchasePrice: $("#Edit_PurchasePrice").val(),
+                sellingPrice: $("#Edit_SellingPrice").val()
+            };
+
+            $.ajax({
+                contentType: 'application/json',
+                dataType: 'json',
+                type: "POST",
+                url: "/Home/Edit",
+                data: JSON.stringify(postData),
+                success: function (data) {
+
+                    if (data.isSuccess) {
+                        swal.fire('موفق', data.message, 'success')
+                            .then(() => location.reload());
+                    }
+                    else {
+                        swal.fire('هشدار', data.message, 'warning');
+                    }
+                }
+            });
+
+            $('#EditProduct').modal('hide');
+        }
+
+
+        function ShowModalCreateProduct() {
+            $("#CreateProduct").modal("show");
+        }
+
+
+
+        function CreateProduct() {
+
+            const postData = {
+                code: $("#Create_Code").val(),
+                name: $("#Create_Name").val(),
+                type: parseInt($("#Create_Type").val()),
+                supplierId: $("#Create_SupplierId").val(),
+                //quantity: $("#Create_Quantity").val(),
+                crime: $("#Create_Crime").val()
+            };
+
+            $.ajax({
+                contentType: 'application/json',
+                dataType: 'json',
+                type: "POST",
+                url: "/Home/Create",
+                data: JSON.stringify(postData),
+                success: function (data) {
+
+                    if (data.isSuccess) {
+                        swal.fire('موفق', data.message, 'success')
+                            .then(() => location.reload());
+                    }
+                    else {
+                        swal.fire('هشدار', data.message, 'warning');
+                    }
+                }
+            });
+
+            $('#CreateProduct').modal('hide');
+        }
+
+
+    </script>
+}
+
+@section Modals {
+
+    <div class="modal fade" id="CreateProduct" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">افزودن محصول</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label>کد محصول</label>
+                        <input class="form-control" id="Create_Code" />
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <label>نام محصول</label>
+                        <input class="form-control" id="Create_Name" />
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <label>نوع محصول</label>
+                        <select id="Create_Type" class="form-control">
+                            @foreach (var t in Enum.GetValues(typeof(Domain.Enums.ProductTypeEnum)))
+                            {
+                                <option value="@((int)t)">@t</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <label>تأمین‌کننده</label>
+                        <select id="Create_SupplierId" class="form-control">
+                            @if (ViewBag.Suppliers != null)
+                            {
+                                foreach (var sup in ViewBag.Suppliers)
+                                {
+                                    <option value="@sup.Id">@sup.Name</option>
+                                }
+                            }
+                            else
+                            {
+                                <option disabled>هیچ تامین‌کننده‌ای یافت نشد</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <label>جرم</label>
+                        <input type="number" class="form-control" id="Create_Crime" />
+                    </div>
+
+                    <div class="form-group mt-2" hidden>
+                        <label>موجودی اولیه</label>
+                        <input type="number" class="form-control" id="Create_Quantity" />
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <a class="btn btn-secondary" data-bs-dismiss="modal">بستن</a>
+                    <a class="btn btn-primary" onclick="CreateProduct()">ثبت</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="EditProduct" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">ویرایش محصول</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-body">
+
+                    <input type="hidden" id="Edit_ProductId" />
+
+                    <div class="form-group">
+                        <label>کد محصول</label>
+                        <input class="form-control" id="Edit_Code" />
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <label>نام محصول</label>
+                        <input class="form-control" id="Edit_Name" />
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <label>نوع محصول</label>
+                        <select id="Edit_Type" class="form-control">
+                            @foreach (var t in Enum.GetValues(typeof(Domain.Enums.ProductTypeEnum)))
+                            {
+                                <option value="@((int)t)">@t</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <label>تأمین‌کننده</label>
+                        <select id="Edit_SupplierId" class="form-control">
+                            @if (ViewBag.Suppliers != null)
+                            {
+                                foreach (var sup in ViewBag.Suppliers)
+                                {
+                                    <option value="@sup.Id">@sup.Name</option>
+                                }
+                            }
+                            else
+                            {
+                                <option disabled>هیچ تامین‌کننده‌ای یافت نشد</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group mt-2">
+                        <label>جرم</label>
+                        <input type="number" class="form-control" id="Edit_Crime" />
+                    </div>
+
+                    <div class="form-group mt-2" hidden>
+                        <label>قیمت خرید</label>
+                        <input type="number" class="form-control" id="Edit_PurchasePrice" />
+                    </div>
+
+                    <div class="form-group mt-2" hidden>
+                        <label>قیمت فروش</label>
+                        <input type="number" class="form-control" id="Edit_SellingPrice" />
+                    </div>
+
+                    <div class="form-group mt-2" hidden>
+                        <label>موجودی</label>
+                        <input type="number" class="form-control" id="Edit_Quantity" />
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <a class="btn btn-secondary" data-bs-dismiss="modal">بستن</a>
+                    <a class="btn btn-primary" onclick="EditProduct()">ذخیره</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+}

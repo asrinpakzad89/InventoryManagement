@@ -1,0 +1,312 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{169111C0-CD15-4FB8-8B54-6B16AE234171}|src\\Application\\Application.csproj|c:\\users\\zagros\\desktop\\inventoryproject\\inventorymanagement\\src\\application\\common\\viewmodels\\products\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{169111C0-CD15-4FB8-8B54-6B16AE234171}|src\\Application\\Application.csproj|solutionrelative:src\\application\\common\\viewmodels\\products\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{169111C0-CD15-4FB8-8B54-6B16AE234171}|src\\Application\\Application.csproj|c:\\users\\zagros\\desktop\\inventoryproject\\inventorymanagement\\src\\application\\features\\products\\commands\\create\\createproductcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{169111C0-CD15-4FB8-8B54-6B16AE234171}|src\\Application\\Application.csproj|solutionrelative:src\\application\\features\\products\\commands\\create\\createproductcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{169111C0-CD15-4FB8-8B54-6B16AE234171}|src\\Application\\Application.csproj|c:\\users\\zagros\\desktop\\inventoryproject\\inventorymanagement\\src\\application\\features\\products\\commands\\update\\updateproductcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{169111C0-CD15-4FB8-8B54-6B16AE234171}|src\\Application\\Application.csproj|solutionrelative:src\\application\\features\\products\\commands\\update\\updateproductcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{169111C0-CD15-4FB8-8B54-6B16AE234171}|src\\Application\\Application.csproj|c:\\users\\zagros\\desktop\\inventoryproject\\inventorymanagement\\src\\application\\features\\purchaseinvoices\\commands\\update\\updatepurchaseinvoicecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{169111C0-CD15-4FB8-8B54-6B16AE234171}|src\\Application\\Application.csproj|solutionrelative:src\\application\\features\\purchaseinvoices\\commands\\update\\updatepurchaseinvoicecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C2A8ECC-81DD-4259-A052-877CA2D64B7F}|src\\Domain\\Domain.csproj|c:\\users\\zagros\\desktop\\inventoryproject\\inventorymanagement\\src\\domain\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C2A8ECC-81DD-4259-A052-877CA2D64B7F}|src\\Domain\\Domain.csproj|solutionrelative:src\\domain\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8427F1F5-F5B3-40AF-B208-A3A4962390B7}|src\\Infrastructure\\Infrastructure.csproj|c:\\users\\zagros\\desktop\\inventoryproject\\inventorymanagement\\src\\infrastructure\\data\\configurations\\product\\productconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8427F1F5-F5B3-40AF-B208-A3A4962390B7}|src\\Infrastructure\\Infrastructure.csproj|solutionrelative:src\\infrastructure\\data\\configurations\\product\\productconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{169111C0-CD15-4FB8-8B54-6B16AE234171}|src\\Application\\Application.csproj|c:\\users\\zagros\\desktop\\inventoryproject\\inventorymanagement\\src\\application\\features\\products\\commands\\create\\createproductcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{169111C0-CD15-4FB8-8B54-6B16AE234171}|src\\Application\\Application.csproj|solutionrelative:src\\application\\features\\products\\commands\\create\\createproductcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{169111C0-CD15-4FB8-8B54-6B16AE234171}|src\\Application\\Application.csproj|c:\\users\\zagros\\desktop\\inventoryproject\\inventorymanagement\\src\\application\\features\\products\\commands\\update\\updateproductcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{169111C0-CD15-4FB8-8B54-6B16AE234171}|src\\Application\\Application.csproj|solutionrelative:src\\application\\features\\products\\commands\\update\\updateproductcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{169111C0-CD15-4FB8-8B54-6B16AE234171}|src\\Application\\Application.csproj|c:\\users\\zagros\\desktop\\inventoryproject\\inventorymanagement\\src\\application\\features\\purchaseinvoices\\commands\\create\\createpurchaseinvoicecommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{169111C0-CD15-4FB8-8B54-6B16AE234171}|src\\Application\\Application.csproj|solutionrelative:src\\application\\features\\purchaseinvoices\\commands\\create\\createpurchaseinvoicecommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8427F1F5-F5B3-40AF-B208-A3A4962390B7}|src\\Infrastructure\\Infrastructure.csproj|c:\\users\\zagros\\desktop\\inventoryproject\\inventorymanagement\\src\\infrastructure\\repositories\\efrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8427F1F5-F5B3-40AF-B208-A3A4962390B7}|src\\Infrastructure\\Infrastructure.csproj|solutionrelative:src\\infrastructure\\repositories\\efrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{169111C0-CD15-4FB8-8B54-6B16AE234171}|src\\Application\\Application.csproj|c:\\users\\zagros\\desktop\\inventoryproject\\inventorymanagement\\src\\application\\features\\products\\commands\\create\\createproductcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{169111C0-CD15-4FB8-8B54-6B16AE234171}|src\\Application\\Application.csproj|solutionrelative:src\\application\\features\\products\\commands\\create\\createproductcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{08D3317B-EC36-48EE-B762-AD72B1DD78F7}|src\\WebApp\\WebApp.csproj|c:\\users\\zagros\\desktop\\inventoryproject\\inventorymanagement\\src\\webapp\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{08D3317B-EC36-48EE-B762-AD72B1DD78F7}|src\\WebApp\\WebApp.csproj|solutionrelative:src\\webapp\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{08D3317B-EC36-48EE-B762-AD72B1DD78F7}|src\\WebApp\\WebApp.csproj|c:\\users\\zagros\\desktop\\inventoryproject\\inventorymanagement\\src\\webapp\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{08D3317B-EC36-48EE-B762-AD72B1DD78F7}|src\\WebApp\\WebApp.csproj|solutionrelative:src\\webapp\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\Infrastructure\\Migrations\\20251130122707_update-2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\Infrastructure\\Migrations\\20251130122707_update-2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{169111C0-CD15-4FB8-8B54-6B16AE234171}|src\\Application\\Application.csproj|c:\\users\\zagros\\desktop\\inventoryproject\\inventorymanagement\\src\\application\\common\\viewmodels\\products\\productiddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{169111C0-CD15-4FB8-8B54-6B16AE234171}|src\\Application\\Application.csproj|solutionrelative:src\\application\\common\\viewmodels\\products\\productiddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\Infrastructure\\Migrations\\20251130122128_update-1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\Infrastructure\\Migrations\\20251130122128_update-1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:133:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:135:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:134:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProductDto.cs",
+              "DocumentMoniker": "C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\Application\\Common\\ViewModels\\Products\\ProductDto.cs",
+              "RelativeDocumentMoniker": "src\\Application\\Common\\ViewModels\\Products\\ProductDto.cs",
+              "ToolTip": "C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\Application\\Common\\ViewModels\\Products\\ProductDto.cs*",
+              "RelativeToolTip": "src\\Application\\Common\\ViewModels\\Products\\ProductDto.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T12:32:50.491Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UpdateProductCommand.cs",
+              "DocumentMoniker": "C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\Application\\Features\\Products\\Commands\\Update\\UpdateProductCommand.cs",
+              "RelativeDocumentMoniker": "src\\Application\\Features\\Products\\Commands\\Update\\UpdateProductCommand.cs",
+              "ToolTip": "C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\Application\\Features\\Products\\Commands\\Update\\UpdateProductCommand.cs",
+              "RelativeToolTip": "src\\Application\\Features\\Products\\Commands\\Update\\UpdateProductCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T12:32:34.433Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UpdatePurchaseInvoiceCommand.cs",
+              "DocumentMoniker": "C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\Application\\Features\\PurchaseInvoices\\Commands\\Update\\UpdatePurchaseInvoiceCommand.cs",
+              "RelativeDocumentMoniker": "src\\Application\\Features\\PurchaseInvoices\\Commands\\Update\\UpdatePurchaseInvoiceCommand.cs",
+              "ToolTip": "C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\Application\\Features\\PurchaseInvoices\\Commands\\Update\\UpdatePurchaseInvoiceCommand.cs",
+              "RelativeToolTip": "src\\Application\\Features\\PurchaseInvoices\\Commands\\Update\\UpdatePurchaseInvoiceCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T12:32:29.599Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\Domain\\Product.cs",
+              "RelativeDocumentMoniker": "src\\Domain\\Product.cs",
+              "ToolTip": "C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\Domain\\Product.cs*",
+              "RelativeToolTip": "src\\Domain\\Product.cs*",
+              "ViewState": "AgIAAAIAAAAAAAAAAAA5wAgAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T12:32:15.954Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UpdateProductCommandValidator.cs",
+              "DocumentMoniker": "C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\Application\\Features\\Products\\Commands\\Update\\UpdateProductCommandValidator.cs",
+              "RelativeDocumentMoniker": "src\\Application\\Features\\Products\\Commands\\Update\\UpdateProductCommandValidator.cs",
+              "ToolTip": "C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\Application\\Features\\Products\\Commands\\Update\\UpdateProductCommandValidator.cs",
+              "RelativeToolTip": "src\\Application\\Features\\Products\\Commands\\Update\\UpdateProductCommandValidator.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAA0wBEAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T12:14:58.454Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CreateProductCommand.cs",
+              "DocumentMoniker": "C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\Application\\Features\\Products\\Commands\\Create\\CreateProductCommand.cs",
+              "RelativeDocumentMoniker": "src\\Application\\Features\\Products\\Commands\\Create\\CreateProductCommand.cs",
+              "ToolTip": "C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\Application\\Features\\Products\\Commands\\Create\\CreateProductCommand.cs*",
+              "RelativeToolTip": "src\\Application\\Features\\Products\\Commands\\Create\\CreateProductCommand.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T12:25:11.932Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CreatePurchaseInvoiceCommandValidator.cs",
+              "DocumentMoniker": "C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\Application\\Features\\PurchaseInvoices\\Commands\\Create\\CreatePurchaseInvoiceCommandValidator.cs",
+              "RelativeDocumentMoniker": "src\\Application\\Features\\PurchaseInvoices\\Commands\\Create\\CreatePurchaseInvoiceCommandValidator.cs",
+              "ToolTip": "C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\Application\\Features\\PurchaseInvoices\\Commands\\Create\\CreatePurchaseInvoiceCommandValidator.cs",
+              "RelativeToolTip": "src\\Application\\Features\\PurchaseInvoices\\Commands\\Create\\CreatePurchaseInvoiceCommandValidator.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAswA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T12:13:39.162Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CreateProductCommandValidator.cs",
+              "DocumentMoniker": "C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\Application\\Features\\Products\\Commands\\Create\\CreateProductCommandValidator.cs",
+              "RelativeDocumentMoniker": "src\\Application\\Features\\Products\\Commands\\Create\\CreateProductCommandValidator.cs",
+              "ToolTip": "C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\Application\\Features\\Products\\Commands\\Create\\CreateProductCommandValidator.cs",
+              "RelativeToolTip": "src\\Application\\Features\\Products\\Commands\\Create\\CreateProductCommandValidator.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAiwBEAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T12:14:40.326Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ProductConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\Infrastructure\\Data\\Configurations\\Product\\ProductConfiguration.cs",
+              "RelativeDocumentMoniker": "src\\Infrastructure\\Data\\Configurations\\Product\\ProductConfiguration.cs",
+              "ToolTip": "C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\Infrastructure\\Data\\Configurations\\Product\\ProductConfiguration.cs",
+              "RelativeToolTip": "src\\Infrastructure\\Data\\Configurations\\Product\\ProductConfiguration.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAmwBYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T12:17:17.541Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "EFRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\Infrastructure\\Repositories\\EFRepository.cs",
+              "RelativeDocumentMoniker": "src\\Infrastructure\\Repositories\\EFRepository.cs",
+              "ToolTip": "C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\Infrastructure\\Repositories\\EFRepository.cs",
+              "RelativeToolTip": "src\\Infrastructure\\Repositories\\EFRepository.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAD4vw8AAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T12:08:26.794Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\WebApp\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "src\\WebApp\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\WebApp\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "src\\WebApp\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAADwvx4AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T12:07:59.615Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ProductIdDto.cs",
+              "DocumentMoniker": "C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\Application\\Common\\ViewModels\\Products\\ProductIdDto.cs",
+              "RelativeDocumentMoniker": "src\\Application\\Common\\ViewModels\\Products\\ProductIdDto.cs",
+              "ToolTip": "C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\Application\\Common\\ViewModels\\Products\\ProductIdDto.cs",
+              "RelativeToolTip": "src\\Application\\Common\\ViewModels\\Products\\ProductIdDto.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAQwAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T12:19:37.789Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "CreateProductCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\Application\\Features\\Products\\Commands\\Create\\CreateProductCommandHandler.cs",
+              "RelativeDocumentMoniker": "src\\Application\\Features\\Products\\Commands\\Create\\CreateProductCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\Application\\Features\\Products\\Commands\\Create\\CreateProductCommandHandler.cs",
+              "RelativeToolTip": "src\\Application\\Features\\Products\\Commands\\Create\\CreateProductCommandHandler.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAewCkAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T12:28:34.712Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\WebApp\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "src\\WebApp\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\WebApp\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "src\\WebApp\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAL0AAAAAAAAAAAAAAMAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-30T12:03:16.604Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "20251130122707_update-2.cs",
+              "DocumentMoniker": "C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\Infrastructure\\Migrations\\20251130122707_update-2.cs",
+              "RelativeDocumentMoniker": "src\\Infrastructure\\Migrations\\20251130122707_update-2.cs",
+              "ToolTip": "C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\Infrastructure\\Migrations\\20251130122707_update-2.cs",
+              "RelativeToolTip": "src\\Infrastructure\\Migrations\\20251130122707_update-2.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAswAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T12:27:08.662Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "20251130122128_update-1.cs",
+              "DocumentMoniker": "C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\Infrastructure\\Migrations\\20251130122128_update-1.cs",
+              "RelativeDocumentMoniker": "src\\Infrastructure\\Migrations\\20251130122128_update-1.cs",
+              "ToolTip": "C:\\Users\\Zagros\\Desktop\\InventoryProject\\InventoryManagement\\src\\Infrastructure\\Migrations\\20251130122128_update-1.cs",
+              "RelativeToolTip": "src\\Infrastructure\\Migrations\\20251130122128_update-1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-30T12:21:28.931Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

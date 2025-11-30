@@ -1,0 +1,166 @@
+﻿@model Application.Features.PurchaseInvoices.Commands.Create.CreatePurchaseInvoiceCommand
+
+@{
+    ViewData["Title"] = "ثبت فاکتور خرید";
+    var suppliers = ViewBag.Suppliers;
+    var products = ViewBag.Products;
+}
+
+<div class="container mt-4" style="direction:rtl;">
+
+    <h2 class="mb-3"><strong>ثبت فاکتور خرید</strong></h2>
+    <hr />
+
+    <div class="card">
+        <div class="card-body">
+
+            <div class="row">
+
+                <div class="col-md-4">
+                    <label>شماره فاکتور</label>
+                    <input id="InvoiceNumber" class="form-control" />
+                </div>
+
+                <div class="col-md-4">
+                    <label>تأمین‌کننده</label>
+                    <select id="SupplierId" class="form-control">
+                        <option value="">انتخاب کنید...</option>
+                        @foreach (var sup in suppliers)
+                        {
+                            <option value="@sup.Id">@sup.Name</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="col-md-4">
+                    <label>تاریخ</label>
+                    <input class="form-control" disabled value="@DateTime.Now.ToShamsi()" />
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card mt-4">
+        <div class="card-header">
+            <strong>آیتم‌های فاکتور</strong>
+            <button class="btn btn-success btn-sm float-start" onclick="addItemRow()"> + اضافه کردن آیتم </button>
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-bordered" id="itemsTable">
+                <thead>
+                    <tr>
+                        <th>محصول</th>
+                        <th>تعداد</th>
+                        <th>قیمت خرید</th>
+                        <th>قیمت فروش</th>
+                        <th>حذف</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+
+    <button class="btn btn-primary mt-3 w-100" onclick="submitInvoice()">ثبت فاکتور</button>
+
+</div>
+
+@section Scripts {
+    <script>
+
+        function addItemRow() {
+
+            let row = `
+                <tr>
+                    <td>
+                        <select class="form-control product">
+                            <option value="">انتخاب...</option>
+                                  @foreach (var p in products)
+                                  {
+                                      <option value="@p.Id">@p.Name</option>
+                                  }
+                        </select>
+                    </td>
+
+                    <td>
+                        <input type="number" min="1" class="form-control qty" />
+                    </td>
+
+                    <td>
+                        <input type="number" min="0" class="form-control purchasePrice" placeholder="قیمت خرید" />
+                    </td>
+
+                    <td>
+                        <input type="number" min="0" class="form-control salePrice" placeholder="قیمت فروش" />
+                    </td>
+
+                    <td>
+                        <button class="btn btn-danger btn-sm" onclick="removeRow(this)">حذف</button>
+                    </td>
+                </tr>
+            `;
+
+            $("#itemsTable tbody").append(row);
+        }
+
+        function removeRow(btn) {
+            $(btn).closest("tr").remove();
+        }
+
+        function submitInvoice() {
+
+            let items = [];
+
+            $("#itemsTable tbody tr").each(function () {
+
+                let productId = $(this).find(".product").val();
+                let qty = $(this).find(".qty").val();
+                let purchasePrice = $(this).find(".purchasePrice").val();
+                let salePrice = $(this).find(".salePrice").val();
+
+                if (productId && qty && purchasePrice) {
+
+                    items.push({
+                        productId: parseInt(productId),
+                        quantity: parseFloat(qty),
+                        purchasePrice: parseFloat(purchasePrice),
+                        salePrice: parseFloat(salePrice)
+                    });
+                }
+            });
+
+            const postData = {
+                invoiceNumber: $("#InvoiceNumber").val(),
+                supplierId: $("#SupplierId").val(),
+                items: items
+            };
+
+            $.ajax({
+                contentType: 'application/json',
+                dataType: 'json',
+                type: "POST",
+                url: "/PurchaseInvoice/Create",
+                data: JSON.stringify(postData),
+                success: function (data) {
+
+                    if (data.isSuccess) {
+                        swal.fire('موفق', data.message, 'success')
+                            .then(() => location.reload());
+                    }
+                    else {
+                        swal.fire('هشدار', data.message, 'warning');
+                    }
+                }
+            });
+        }
+
+    </script>
+}
