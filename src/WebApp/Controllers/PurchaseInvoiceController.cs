@@ -20,6 +20,7 @@ public class PurchaseInvoiceController : Controller
         var data = await _mediator.Send(new GetPurchaseInvoiceQuery());
         return View(data);
     }
+
     [HttpGet("PurchaseInvoice/Details/{id}")]
     public async Task<IActionResult> Details(int id)
     {
@@ -101,6 +102,7 @@ public class PurchaseInvoiceController : Controller
             {
                 Id = id
             };
+
             var invoice = await _mediator.Send(query);
             if (invoice == null)
                 return NotFound();

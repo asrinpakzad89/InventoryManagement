@@ -37,6 +37,7 @@ public class SaleInvoiceController : Controller
             });
         }
     }
+
     [HttpGet("SaleInvoice/Details/{id}")]
     public async Task<IActionResult> Details(int id)
     {

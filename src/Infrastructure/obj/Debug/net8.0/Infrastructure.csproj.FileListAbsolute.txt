@@ -11,6 +11,7 @@ C:\Users\Zagros\Desktop\InventoryProject\InventoryManagement\src\Infrastructure\
 C:\Users\Zagros\Desktop\InventoryProject\InventoryManagement\src\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfoInputs.cache
 C:\Users\Zagros\Desktop\InventoryProject\InventoryManagement\src\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfo.cs
 C:\Users\Zagros\Desktop\InventoryProject\InventoryManagement\src\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Zagros\Desktop\InventoryProject\InventoryManagement\src\Infrastructure\obj\Debug\net8.0\Infrastructure.sourcelink.json
 C:\Users\Zagros\Desktop\InventoryProject\InventoryManagement\src\Infrastructure\obj\Debug\net8.0\Infrastr.15EFFBFE.Up2Date
 C:\Users\Zagros\Desktop\InventoryProject\InventoryManagement\src\Infrastructure\obj\Debug\net8.0\Infrastructure.dll
 C:\Users\Zagros\Desktop\InventoryProject\InventoryManagement\src\Infrastructure\obj\Debug\net8.0\refint\Infrastructure.dll

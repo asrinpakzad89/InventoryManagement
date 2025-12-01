@@ -8,6 +8,7 @@ C:\Users\Zagros\Desktop\InventoryProject\InventoryManagement\src\Domain\obj\Debu
 C:\Users\Zagros\Desktop\InventoryProject\InventoryManagement\src\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
 C:\Users\Zagros\Desktop\InventoryProject\InventoryManagement\src\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
 C:\Users\Zagros\Desktop\InventoryProject\InventoryManagement\src\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+C:\Users\Zagros\Desktop\InventoryProject\InventoryManagement\src\Domain\obj\Debug\net8.0\Domain.sourcelink.json
 C:\Users\Zagros\Desktop\InventoryProject\InventoryManagement\src\Domain\obj\Debug\net8.0\Domain.csproj.Up2Date
 C:\Users\Zagros\Desktop\InventoryProject\InventoryManagement\src\Domain\obj\Debug\net8.0\Domain.dll
 C:\Users\Zagros\Desktop\InventoryProject\InventoryManagement\src\Domain\obj\Debug\net8.0\refint\Domain.dll

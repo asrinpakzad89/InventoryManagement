@@ -1,14 +1,8 @@
-﻿using Application.Common.Interfaces;
-using Application.Common.ViewModels;
-using Framework.Exceptions;
-using System.Data;
-
-namespace Application.Features.Auth.Commands.Login;
+﻿namespace Application.Features.Auth.Commands.Login;
 
 public class LoginCommandHandler : IRequestHandler<LoginCommand, LoginResultDto>
 {
     private readonly ITokenService _tokenService;
-
     private readonly IEFRepository<User> _repository;
 
     private LoginCommand _command;

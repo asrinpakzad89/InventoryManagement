@@ -20,6 +20,7 @@ namespace WebApp
             #endregion
 
             var jwtSettings = builder.Configuration.GetSection("JwtSettings");
+           
             builder.Services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = "Cookies";
