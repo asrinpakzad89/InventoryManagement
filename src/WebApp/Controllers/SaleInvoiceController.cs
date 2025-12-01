@@ -210,7 +210,7 @@ public class SaleInvoiceController : Controller
             {
                 id = x.Id,
                 invoiceNumber = x.InvoiceNumber,
-                supplierName = x.CustomerName,
+                customerName = x.CustomerName,
                 dateString = x.Date.ToString("yyyy/MM/dd"),
                 totalPrice = x.TotalPrice
             }));
